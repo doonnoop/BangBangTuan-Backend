@@ -12,7 +12,7 @@ export const npmDependencies = () => axios.get('./npm.json').then(res => res.dat
 export const weibo = () => axios.get('./weibo.json').then(res => res.data).catch(err => console.log(err));
 
 export const gitOauthLogin = () => get({ url: `${config.GIT_OAUTH}/authorize?client_id=792cdcd244e98dcd2dee&redirect_uri=http://localhost:3006/&scope=user&state=reactAdmin` });
-export const gitOauthToken = code => post({ 
+export const gitOauthToken = code => post({
     url: `https://cors-anywhere.herokuapp.com/${config.GIT_OAUTH}/access_token`,
     data: {
         client_id: '792cdcd244e98dcd2dee',
@@ -20,13 +20,32 @@ export const gitOauthToken = code => post({
         redirect_uri: 'http://localhost:3006/',
         state: 'reactAdmin',
         code,
-    } 
+    }
 });
 // {headers: {Accept: 'application/json'}}
 export const gitOauthInfo = access_token => get({ url: `${config.GIT_USER}access_token=${access_token}` });
 
 // easy-mock数据交互
 // 管理员权限获取
-export const admin = () => get({ url: config.MOCK_AUTH_ADMIN });
+export const admin = (data) => post({
+    url: config.USER_LOGIN,
+    data,
+    headers: {
+        'Content-Type': 'application/json',
+    }
+});
 // 访问权限获取
 export const guest = () => get({ url: config.MOCK_AUTH_VISITOR });
+
+export const getAllUsers = () => get({
+    url: config.ALL_USERS + '?current=1&size=100',
+    headers: {
+        'Authorization': 'Bearer ' + localStorage.getItem('token')
+    }
+});
+export const getCpMatching = () => get({
+    url: config.CP_TEAM,
+    headers: {
+        'Authorization': 'Bearer ' + localStorage.getItem('token')
+    }
+});

@@ -14,10 +14,13 @@ class Login extends React.Component {
         setAlitaState({ stateName: 'auth', data: null });
     }
     componentDidUpdate(prevProps) { // React 16.3+弃用componentWillReceiveProps
+        console.log(this.props);
         const { auth: nextAuth = {}, history } = this.props;
         // const { history } = this.props;
-        if (nextAuth.data && nextAuth.data.uid) { // 判断是否登陆
-            localStorage.setItem('user', JSON.stringify(nextAuth.data));
+        console.log(nextAuth);
+        if (nextAuth.data) { // 判断是否登陆
+            localStorage.setItem('token', nextAuth.data.data);
+            console.log("Ready to redict to index.")
             history.push('/');
         }
     }
@@ -26,9 +29,16 @@ class Login extends React.Component {
         this.props.form.validateFields((err, values) => {
             if (!err) {
                 console.log('Received values of form: ', values);
+                const body = {
+                    "username": values.userName,
+                    "password": values.password
+                };
                 const { setAlitaState } = this.props;
-                if (values.userName === 'admin' && values.password === 'admin') setAlitaState({ funcName: 'admin', stateName: 'auth' });
-                if (values.userName === 'guest' && values.password === 'guest') setAlitaState({ funcName: 'guest', stateName: 'auth' });
+                if (values.userName === 'bbt-admin' && values.password === 'TvM&zaV%nvWjwfN1') {
+                    setAlitaState({ funcName: 'admin', stateName: 'auth', params: body });
+
+                }
+                // if (values.userName === 'guest' && values.password === 'guest') setAlitaState({ funcName: 'guest', stateName: 'auth' });
             }
         });
     };
@@ -49,14 +59,14 @@ class Login extends React.Component {
                             {getFieldDecorator('userName', {
                                 rules: [{ required: true, message: '请输入用户名!' }],
                             })(
-                                <Input prefix={<Icon type="user" style={{ fontSize: 13 }} />} placeholder="管理员输入admin, 游客输入guest" />
+                                <Input prefix={<Icon type="user" style={{ fontSize: 13 }} />} placeholder="请输入用户名" />
                             )}
                         </FormItem>
                         <FormItem>
                             {getFieldDecorator('password', {
                                 rules: [{ required: true, message: '请输入密码!' }],
                             })(
-                                <Input prefix={<Icon type="lock" style={{ fontSize: 13 }} />} type="password" placeholder="管理员输入admin, 游客输入guest" />
+                                <Input prefix={<Icon type="lock" style={{ fontSize: 13 }} />} type="password" placeholder="请输入密码" />
                             )}
                         </FormItem>
                         <FormItem>

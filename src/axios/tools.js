@@ -11,8 +11,9 @@ import { message } from 'antd';
  * @param msg       接口异常提示
  * @param headers   接口所需header配置
  */
+
 export const get = ({url, msg = '接口异常', headers}) =>
-    axios.get(url, headers).then(res => res.data).catch(err => {
+    axios.get(url, {headers}).then(res => res.data).catch(err => {
        console.log(err);
        message.warn(msg);
     });
@@ -25,7 +26,7 @@ export const get = ({url, msg = '接口异常', headers}) =>
  * @param headers   接口所需header配置
  */
 export const post = ({url, data, msg = '接口异常', headers}) =>
-    axios.post(url, data, headers).then(res => res.data).catch(err => {
+    axios.post(url, data, {headers}).then(res => res.data).catch(err => {
         console.log(err);
         message.warn(msg);
     });
