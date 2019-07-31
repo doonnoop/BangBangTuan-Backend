@@ -12,7 +12,10 @@ import AuthBasic from './auth/Basic';
 import RouterEnter from './auth/RouterEnter';
 import UserManage from './Management/userManage';
 import TeamManage from './Management/teamManage';
-import ProjectManage from './Management/teamManage';
+import ProjectManage from './Management/projectManage';
+import MissionManage from './Management/missionManage';
+import CreateProjectForm from './Management/createProjectForm';
+import CreateMissionForm from './Management/createMissionForm';
 
 const WysiwygBundle = Loadable({ // 按需加载富文本配置
     loader: () => import('./ui/Wysiwyg'),
@@ -22,5 +25,6 @@ const WysiwygBundle = Loadable({ // 按需加载富文本配置
 export default {
     BasicTable, AdvancedTable, AsynchronousTable,
     Dashboard, AuthBasic, RouterEnter, WysiwygBundle,
-    UserManage, TeamManage, ProjectManage
+    UserManage, TeamManage, ProjectManage, MissionManage,
+    CreateProjectForm, CreateMissionForm
 }

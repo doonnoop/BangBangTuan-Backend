@@ -2,7 +2,7 @@
  * Created by hao.cheng on 2017/4/16.
  */
 import axios from 'axios';
-import { get, post } from './tools';
+import { get, post, Delete } from './tools';
 import * as config from './config';
 
 export const getBbcNews = () => get({ url: config.NEWS_BBC });
@@ -43,9 +43,44 @@ export const getAllUsers = () => get({
         'Authorization': 'Bearer ' + localStorage.getItem('token')
     }
 });
+
 export const getCpMatching = () => get({
     url: config.CP_TEAM,
     headers: {
+        'Authorization': 'Bearer ' + localStorage.getItem('token')
+    }
+});
+
+export const getAllProjects = () => get({
+    url: config.PROJECTS + '?current=1&size=20',
+    headers: {
+        'Authorization': 'Bearer ' + localStorage.getItem('token')
+    }
+});
+
+export const createProjects = (data) => post({
+    url: config.PROJECTS + '?current=1&size=20',
+    data,
+    headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + localStorage.getItem('token')
+    }
+});
+
+
+export const deleteProjects = (id) => Delete ({
+    url: config.PROJECTS + '/' + id,
+    headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + localStorage.getItem('token')
+    }
+});
+
+export const uploadFiles = (file) => post ({
+    url: config.UPLOAD,
+    data: file,
+    headers: {
+        // 'Content-Type': 'multipart/form-data',
         'Authorization': 'Bearer ' + localStorage.getItem('token')
     }
 });

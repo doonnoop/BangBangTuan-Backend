@@ -21,4 +21,5 @@ const URL = 'https://api.bangneedu.com';
 export const USER_LOGIN = URL + '/login';
 export const ALL_USERS = URL + '/allUser';
 export const CP_TEAM = URL + '/projectTeam';
-
+export const PROJECTS = URL + '/project';
+export const UPLOAD = URL + '/upload';

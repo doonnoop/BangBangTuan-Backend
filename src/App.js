@@ -6,6 +6,8 @@ import HeaderCustom from './components/HeaderCustom';
 import { Layout } from 'antd';
 import { ThemePicker } from './components/widget';
 import { connectAlita } from 'redux-alita';
+import MissionManage from "./components/Management/missionManage";
+import {Switch, Route} from 'react-router-dom'
 
 const { Content, Footer } = Layout;
 
@@ -53,7 +55,10 @@ class App extends Component {
                     <Layout style={{flexDirection: 'column'}}>
                         <HeaderCustom toggle={this.toggle} collapsed={this.state.collapsed} user={auth.data || {}} />
                         <Content style={{ margin: '0 16px', overflow: 'initial', flex: '1 1 0' }}>
-                            <Routes auth={auth} />
+                            <Switch>
+                                <Route path="/app/dashboard/missions/:id" component={MissionManage} />
+                                <Routes auth={auth} />
+                            </Switch>
                         </Content>
                         <Footer style={{ textAlign: 'center' }}>
                         BangBangTuan ©{new Date().getFullYear()} Created by doonnoop

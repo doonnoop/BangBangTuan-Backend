@@ -30,3 +30,17 @@ export const post = ({url, data, msg = '接口异常', headers}) =>
         console.log(err);
         message.warn(msg);
     });
+
+/**
+ * 公用delete请求
+ * @param url       接口地址
+ * @param data      接口参数
+ * @param msg       接口异常提示
+ * @param headers   接口所需header配置
+ */
+export const Delete = ({url, msg = '接口异常', headers}) =>
+    axios.delete(url, {headers}).then(res => res.data).catch(err => {
+        console.log(err);
+        message.warn(msg);
+    });
+

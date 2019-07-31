@@ -14,7 +14,6 @@ class Login extends React.Component {
         setAlitaState({ stateName: 'auth', data: null });
     }
     componentDidUpdate(prevProps) { // React 16.3+弃用componentWillReceiveProps
-        console.log(this.props);
         const { auth: nextAuth = {}, history } = this.props;
         // const { history } = this.props;
         console.log(nextAuth);

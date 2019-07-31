@@ -1,52 +1,33 @@
 /**
- * Created by peng on 2019/7/25.
+ * Created by peng on 2019/7/29.
  */
 import React from 'react';
-import { Table, Button, Row, Col, Card } from 'antd';
-import { getCpMatching } from '../../axios/index';
+import {Table, Button, Row, Col, Card } from 'antd';
+import { getAllProjects, deleteProjects} from '../../axios/index';
 import BreadcrumbCustom from '../BreadcrumbCustom';
-const columns = [{
-    title: 'ID',
-    dataIndex: 'id',
-    width: 80
-},{
-    title: '用户名',
-    dataIndex: 'name',
-    width: 80,
-    render: (text, record) => <a href={record.url} target="_blank" rel="noopener noreferrer">{text}</a>
-}, {
-    title: '手机号',
-    dataIndex: 'phone',
-    width: 80
-}, {
-    title: 'userID',
-    dataIndex: 'userId',
-    width: 80
-},{
-    title: '微信号',
-    dataIndex: 'weixin',
-    width: 80
-},{
-    title: '状态',
-    dataIndex: 'status',
-    width: 80
-}];
+import { withRouter, Link } from 'react-router-dom';
+import CreateProjectForm from "./createProjectForm";
 
 class ProjectManage extends React.Component {
-    state = {
-        selectedRowKeys: [], // Check here to configure the default column
-        loading: false,
-        teams: []
-    };
+    constructor(props) {
+        super(props);
+        this.state = {
+            selectedRowKeys: [], // Check here to configure the default column
+            loading: false,
+            projects: [],
+            visible: false
+        };
+    }
+
     componentDidMount() {
         this.start();
     }
     start = () => {
         this.setState({ loading: true });
-        getCpMatching().then((res) => {
+        getAllProjects().then((res) => {
             console.log(res)
             this.setState({
-                teams: res.data.records,
+                projects: res.data.records,
                 loading:false
             });
         });
@@ -55,7 +36,62 @@ class ProjectManage extends React.Component {
         console.log('selectedRowKeys changed: ', selectedRowKeys);
         this.setState({ selectedRowKeys });
     };
+
+    deleteProject = (id) => {
+        console.log(id);
+        deleteProjects(id).then((res) => {
+            console.log(res);
+            this.start();
+        });
+    };
+
     render() {
+        const columns = [{
+            title: 'ID',
+            dataIndex: 'id',
+            width: 80
+        },{
+            title: '项目名称',
+            dataIndex: 'name',
+            width: 80,
+            render: (text, record) => {
+                return <Link to={`/app/dashboard/missions/${record.id}`}>{text}</Link>
+            }
+        }, {
+            title: '图片',
+            dataIndex: 'image',
+            width: 80,
+            render: (text, record) => (
+            <span>
+            <img src={text} alt="" />
+            </span>
+            ),
+        }, {
+            title: '技术',
+            dataIndex: 'technology',
+            width: 80
+        }, {
+            title: '类型',
+            dataIndex: 'type',
+            width: 80
+        },{
+            title: '详情',
+            dataIndex: 'details',
+            width: 80
+        },{
+            title: '创建时间',
+            dataIndex: 'createTime',
+            width: 80
+        },{
+            title: 'Action',
+            key: 'action',
+            width: 80,
+            render: (text, record) => (
+                <span>
+                <Button onClick={() => {this.deleteProject(record.id)}}>删除</Button>
+            </span>
+            ),
+        }];
         const { loading, selectedRowKeys } = this.state;
         const rowSelection = {
             selectedRowKeys,
@@ -74,8 +110,9 @@ class ProjectManage extends React.Component {
                                             disabled={loading} loading={loading}
                                     >Reload</Button>
                                     <span style={{ marginLeft: 8 }}>{hasSelected ? `Selected ${selectedRowKeys.length} items` : ''}</span>
+                                    <CreateProjectForm start={this.start} />
                                 </div>
-                                <Table rowSelection={rowSelection} columns={columns} dataSource={this.state.teams} rowKey="id" />
+                                <Table rowSelection={rowSelection} columns={columns} dataSource={this.state.projects} rowKey="id" scroll={{ x: 1300 }} />
                             </Card>
                         </div>
                     </Col>
@@ -85,4 +122,4 @@ class ProjectManage extends React.Component {
     }
 }
 
-export default ProjectManage;
+export default withRouter(ProjectManage);
