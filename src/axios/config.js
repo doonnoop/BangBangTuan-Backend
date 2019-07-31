@@ -23,3 +23,4 @@ export const ALL_USERS = URL + '/allUser';
 export const CP_TEAM = URL + '/projectTeam';
 export const PROJECTS = URL + '/project';
 export const UPLOAD = URL + '/upload';
+export const PROJECT_TASK = URL + '/projectTask';

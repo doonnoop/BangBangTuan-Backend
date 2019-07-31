@@ -2,8 +2,8 @@
  * Created by peng on 2019/7/31.
  */
 import React, { Component } from 'react';
-import {Button, Modal, Form, Input, Radio, message, Upload, Icon} from 'antd';
-import { createProjects } from '../../axios/index';
+import {Button, Modal, Form, Input} from 'antd';
+import { createProjectTask } from '../../axios/index';
 const FormItem = Form.Item;
 
 class CreateMissionForm extends Component {
@@ -26,7 +26,7 @@ class CreateMissionForm extends Component {
             console.log('Received values of form: ', values);
             form.resetFields();
             this.setState({ visible: false });
-            createProjects(values).then((res) => {
+            createProjectTask(values).then((res) => {
                 console.log(res);
                 this.props.start();
             });
@@ -36,26 +36,6 @@ class CreateMissionForm extends Component {
         this.form = form;
     };
     render() {
-        const uploadProps = {
-            name: 'file',
-            action: 'https://api.bangneedu.com/upload',
-            headers: {
-                'Authorization': 'Bearer ' + localStorage.getItem('token')
-            },
-            onChange(info) {
-                if (info.file.status !== 'uploading') {
-                    console.log(info.file.response.data);
-                }
-                if (info.file.status === 'done') {
-                    // that.setState({
-                    //     image: info.file.response.data
-                    // });
-                    message.success(`${info.file.name} 上传成功。`);
-                } else if (info.file.status === 'error') {
-                    message.error(`${info.file.name} 上传失败。`);
-                }
-            },
-        };
         const CollectionCreateForm = Form.create()(
             (props) => {
                 const { visible, onCancel, onCreate, form } = props;
@@ -63,51 +43,38 @@ class CreateMissionForm extends Component {
                 return (
                     <Modal
                         visible={visible}
-                        title="创建新项目"
+                        title="创建新任务"
                         okText="创建"
                         onCancel={onCancel}
                         onOk={onCreate}
                     >
                         <Form layout="vertical">
-                            <FormItem label="项目名称">
-                                {getFieldDecorator('name', {
-                                    rules: [{ required: true, message: '请输入项目名称!' }],
+                            <FormItem label="项目ID">
+                                {getFieldDecorator('projectId', {
+                                    initialValue: this.props.id
+                                })(
+                                    <Input disabled />
+                                )}
+                            </FormItem>
+                            <FormItem label="标题">
+                                {getFieldDecorator('title', {
+                                    rules: [{ message: '请输入标题!' }],
                                 })(
                                     <Input />
                                 )}
                             </FormItem>
-                            <FormItem label="项目介绍">
+                            <FormItem label="任务名称">
+                                {getFieldDecorator('name', {
+                                    rules: [{ required: true, message: '请输入任务名称!' }],
+                                })(
+                                    <Input />
+                                )}
+                            </FormItem>
+                            <FormItem label="任务介绍">
                                 {getFieldDecorator('details', {
                                     rules: [{required: true}]
                                 })(<Input type="textarea" row={3} />)}
                             </FormItem>
-                            <FormItem label="技术栈">
-                                {getFieldDecorator('technology', {
-                                    rules: [{ message: '请输入技术栈!' }],
-                                })(
-                                    <Input />
-                                )}
-                            </FormItem>
-                            <FormItem label="项目图片">
-                                {/*<Upload accept="multipart/form-data"*/}
-                                {/*        customRequest={this.uploadImage}>*/}
-                                <Upload {...uploadProps}>
-                                    <Button>
-                                        <Icon type="upload" /> 点击上传项目图片
-                                    </Button>
-                                </Upload>
-                            </FormItem>
-                            <FormItem className="collection-create-form_last-form-item" style={{marginBottom: 0}}>
-                                {getFieldDecorator('type', {
-                                    initialValue: '1',
-                                })(
-                                    <Radio.Group>
-                                        <Radio value="1">实习</Radio>
-                                        <Radio value="2">练习</Radio>
-                                    </Radio.Group>
-                                )}
-                            </FormItem>
-
                         </Form>
                     </Modal>
                 );

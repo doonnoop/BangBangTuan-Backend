@@ -44,6 +44,15 @@ export const getAllUsers = () => get({
     }
 });
 
+export const uploadFiles = (file) => post ({
+    url: config.UPLOAD,
+    data: file,
+    headers: {
+        // 'Content-Type': 'multipart/form-data',
+        'Authorization': 'Bearer ' + localStorage.getItem('token')
+    }
+});
+
 export const getCpMatching = () => get({
     url: config.CP_TEAM,
     headers: {
@@ -59,14 +68,13 @@ export const getAllProjects = () => get({
 });
 
 export const createProjects = (data) => post({
-    url: config.PROJECTS + '?current=1&size=20',
+    url: config.PROJECTS,
     data,
     headers: {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer ' + localStorage.getItem('token')
     }
 });
-
 
 export const deleteProjects = (id) => Delete ({
     url: config.PROJECTS + '/' + id,
@@ -76,11 +84,26 @@ export const deleteProjects = (id) => Delete ({
     }
 });
 
-export const uploadFiles = (file) => post ({
-    url: config.UPLOAD,
-    data: file,
+export const getAllProjectTasks = (id) => get({
+    url: config.PROJECT_TASK + '/' + id,
     headers: {
-        // 'Content-Type': 'multipart/form-data',
+        'Authorization': 'Bearer ' + localStorage.getItem('token')
+    }
+});
+
+export const deleteProjectTask = (id) => Delete ({
+    url: config.PROJECT_TASK + '/' + id,
+    headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + localStorage.getItem('token')
+    }
+});
+
+export const createProjectTask = (data) => post({
+    url: config.PROJECT_TASK,
+    data,
+    headers: {
+        'Content-Type': 'application/json',
         'Authorization': 'Bearer ' + localStorage.getItem('token')
     }
 });

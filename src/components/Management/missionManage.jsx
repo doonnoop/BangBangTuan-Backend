@@ -3,58 +3,39 @@
  */
 import React from 'react';
 import { Table, Button, Row, Col, Card } from 'antd';
-import { getAllProjects } from '../../axios/index';
+import {deleteProjectTask, getAllProjectTasks} from '../../axios/index';
 import BreadcrumbCustom from '../BreadcrumbCustom';
 import CreateMissionForm from "./createMissionForm";
-const columns = [{
-    title: 'ID',
-    dataIndex: 'id',
-    width: 80
-},{
-    title: '项目名称',
-    dataIndex: 'name',
-    width: 80,
-    render: (text, record) => {
-        return <a href={record.url} target="_blank" rel="noopener noreferrer">{text}</a>
-    }
-}, {
-    title: '技术',
-    dataIndex: 'technology',
-    width: 80
-}, {
-    title: '类型',
-    dataIndex: 'type',
-    width: 80
-},{
-    title: '状态',
-    dataIndex: 'status',
-    width: 80
-},{
-    title: '创建时间',
-    dataIndex: 'createTime',
-    width: 80
-}];
 
 class MissionManage extends React.Component {
     state = {
         selectedRowKeys: [], // Check here to configure the default column
         loading: false,
-        projects: []
+        tasks: []
     };
     componentDidMount() {
-        console.log(this.props.match.params.id)
+        console.log(this.props.match.params.id);
         this.start();
     }
     start = () => {
         this.setState({ loading: true });
-        getAllProjects().then((res) => {
+        getAllProjectTasks(this.props.match.params.id).then((res) => {
             console.log(res)
             this.setState({
-                projects: res.data.records,
+                tasks: res.data,
                 loading:false
             });
         });
     };
+
+    deleteProjectTask = (id) => {
+        console.log(id);
+        deleteProjectTask(id).then((res) => {
+            console.log(res);
+            this.start();
+        });
+    };
+
     onSelectChange = (selectedRowKeys) => {
         console.log('selectedRowKeys changed: ', selectedRowKeys);
         this.setState({ selectedRowKeys });
@@ -63,6 +44,43 @@ class MissionManage extends React.Component {
         this.props.history.push('/app/dashboard/projects')
     };
     render() {
+        const columns = [{
+            title: 'ID',
+            dataIndex: 'id',
+            width: 80
+        },{
+            title: '任务名称',
+            dataIndex: 'name',
+            width: 80,
+            render: (text, record) => {
+                return <a href={record.url} target="_blank" rel="noopener noreferrer">{text}</a>
+            }
+        }, {
+            title: '标题',
+            dataIndex: 'title',
+            width: 80
+        }, {
+            title: '详情',
+            dataIndex: 'details',
+            width: 80
+        },{
+            title: '状态',
+            dataIndex: 'status',
+            width: 80
+        },{
+            title: '创建时间',
+            dataIndex: 'createTime',
+            width: 80
+        },{
+            title: 'Action',
+            key: 'action',
+            width: 80,
+            render: (text, record) => (
+                <span>
+                <Button onClick={() => {this.deleteProjectTask(record.id)}}>删除</Button>
+            </span>
+            ),
+        }];
         const { loading, selectedRowKeys } = this.state;
         const rowSelection = {
             selectedRowKeys,
@@ -81,10 +99,10 @@ class MissionManage extends React.Component {
                                             disabled={loading} loading={loading}
                                     >Reload</Button>
                                     <span style={{ marginLeft: 8 }}>{hasSelected ? `Selected ${selectedRowKeys.length} items` : ''}</span>
-                                    <CreateMissionForm />
+                                    <CreateMissionForm start={this.start} id={this.props.match.params.id} />
                                 </div>
-                                <Table rowSelection={rowSelection} columns={columns} dataSource={this.state.projects} rowKey="id" />
-                                <Button type="primary" onClick={this.return}>返回</Button>
+                                <Table rowSelection={rowSelection} columns={columns} dataSource={this.state.tasks} rowKey="id" />
+                                <Button type="primary" style={{ marginTop: 10 }} onClick={this.return}>返回</Button>
                             </Card>
                         </div>
                     </Col>
