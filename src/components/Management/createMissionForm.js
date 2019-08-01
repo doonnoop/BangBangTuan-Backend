@@ -56,13 +56,6 @@ class CreateMissionForm extends Component {
                                     <Input disabled />
                                 )}
                             </FormItem>
-                            <FormItem label="标题">
-                                {getFieldDecorator('title', {
-                                    rules: [{ message: '请输入标题!' }],
-                                })(
-                                    <Input />
-                                )}
-                            </FormItem>
                             <FormItem label="任务名称">
                                 {getFieldDecorator('name', {
                                     rules: [{ required: true, message: '请输入任务名称!' }],

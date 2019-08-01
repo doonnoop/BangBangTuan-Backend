@@ -58,7 +58,6 @@ class ProjectManage extends React.Component {
         if (info.file.status === 'done') {
             const data = {
                 "id": record.id,
-                // "details": record.details,
                 "image": info.file.response.data
             };
             editProjects(JSON.stringify(data)).then((res) => {
@@ -98,7 +97,6 @@ class ProjectManage extends React.Component {
                         headers={
                             {'Authorization': 'Bearer ' + localStorage.getItem('token')}
                         }
-                        // onChange={this.handleChange}
                         onChange={(value)=>{this.handleChange(value,record)}}
                     >
                     {text ? <img src={text} alt="image" style={{ width: '100%' }} /> : uploadButton}

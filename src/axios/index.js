@@ -44,6 +44,13 @@ export const getAllUsers = () => get({
     }
 });
 
+export const getUserProfile = () => get({
+    url: config.USER_PROFILE,
+    headers: {
+        'Authorization': 'Bearer ' + localStorage.getItem('token')
+    }
+});
+
 export const uploadFiles = (file) => post ({
     url: config.UPLOAD,
     data: file,

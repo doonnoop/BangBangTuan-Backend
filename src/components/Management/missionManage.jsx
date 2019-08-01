@@ -56,10 +56,6 @@ class MissionManage extends React.Component {
                 return <a href={record.url} target="_blank" rel="noopener noreferrer">{text}</a>
             }
         }, {
-            title: '标题',
-            dataIndex: 'title',
-            width: 80
-        }, {
             title: '详情',
             dataIndex: 'details',
             width: 80

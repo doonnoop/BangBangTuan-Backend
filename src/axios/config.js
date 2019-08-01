@@ -19,6 +19,7 @@ export const NEWS_BBC = 'https://newsapi.org/v2/top-headlines?sources=bbc-news&a
 
 const URL = 'https://api.bangneedu.com';
 export const USER_LOGIN = URL + '/login';
+export const USER_PROFILE = URL + '/user';
 export const ALL_USERS = URL + '/allUser';
 export const CP_TEAM = URL + '/projectTeam';
 export const PROJECTS = URL + '/project';

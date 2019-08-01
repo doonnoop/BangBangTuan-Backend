@@ -22,7 +22,6 @@ class CreateProjectForm extends Component {
             if (err) {
                 return;
             }
-
             console.log('Received values of form: ', values);
             form.resetFields();
             this.setState({ visible: false });
@@ -36,26 +35,6 @@ class CreateProjectForm extends Component {
         this.form = form;
     };
     render() {
-        const uploadProps = {
-            name: 'file',
-            action: 'https://api.bangneedu.com/upload',
-            headers: {
-                'Authorization': 'Bearer ' + localStorage.getItem('token')
-            },
-            onChange(info) {
-                if (info.file.status !== 'uploading') {
-                    console.log(info.file.response.data);
-                }
-                if (info.file.status === 'done') {
-                    // that.setState({
-                    //     image: info.file.response.data
-                    // });
-                    message.success(`${info.file.name} 上传成功。`);
-                } else if (info.file.status === 'error') {
-                    message.error(`${info.file.name} 上传失败。`);
-                }
-            },
-        };
         const CollectionCreateForm = Form.create()(
             (props) => {
                 const { visible, onCancel, onCreate, form } = props;
@@ -87,15 +66,6 @@ class CreateProjectForm extends Component {
                                 })(
                                     <Input />
                                 )}
-                            </FormItem>
-                            <FormItem label="项目图片">
-                                {/*<Upload accept="multipart/form-data"*/}
-                                {/*        customRequest={this.uploadImage}>*/}
-                                <Upload {...uploadProps}>
-                                    <Button>
-                                        <Icon type="upload" /> 点击上传项目图片
-                                    </Button>
-                                </Upload>
                             </FormItem>
                             <FormItem className="collection-create-form_last-form-item" style={{marginBottom: 0}}>
                                 {getFieldDecorator('type', {

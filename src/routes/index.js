@@ -7,6 +7,7 @@ import DocumentTitle from 'react-document-title';
 import AllComponents from '../components';
 import routesConfig from './config';
 import queryString from 'query-string';
+import { getUserProfile } from '../axios/index';
 
 export default class CRouter extends Component {
     requireAuth = (permission, component) => {
@@ -18,13 +19,20 @@ export default class CRouter extends Component {
     };
     requireLogin = (component, permission) => {
         // const { auth } = this.props;
-        // console.log(auth);
+        // console.log(this.props);
         //const  {permissions}  = auth.data;
         //if (process.env.NODE_ENV === 'production' && !permissions) { // 线上环境判断是否登录
         //     return <Redirect to={'/login'} />;
         // }
         let token = localStorage.getItem('token');
-        if(!token) {
+        if(token) {
+            getUserProfile().then((res) => {
+                console.log(res);
+                if(res.status !== 200) {
+                    return <Redirect to={'/login'} />;
+                }
+            });
+        } else {
             return <Redirect to={'/login'} />;
         }
         return permission ? this.requireAuth(permission, component) : component;
