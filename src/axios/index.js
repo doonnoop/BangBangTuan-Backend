@@ -2,7 +2,7 @@
  * Created by hao.cheng on 2017/4/16.
  */
 import axios from 'axios';
-import { get, post, Delete } from './tools';
+import { get, post, Delete, put } from './tools';
 import * as config from './config';
 
 export const getBbcNews = () => get({ url: config.NEWS_BBC });
@@ -78,6 +78,15 @@ export const createProjects = (data) => post({
 
 export const deleteProjects = (id) => Delete ({
     url: config.PROJECTS + '/' + id,
+    headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + localStorage.getItem('token')
+    }
+});
+
+export const editProjects = (data) => put({
+    url: config.PROJECTS,
+    data,
     headers: {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer ' + localStorage.getItem('token')

@@ -2,8 +2,8 @@
  * Created by peng on 2019/7/29.
  */
 import React from 'react';
-import {Table, Button, Row, Col, Card } from 'antd';
-import { getAllProjects, deleteProjects} from '../../axios/index';
+import {Table, Button, Row, Col, Card, Upload, Icon } from 'antd';
+import { getAllProjects, deleteProjects, editProjects} from '../../axios/index';
 import BreadcrumbCustom from '../BreadcrumbCustom';
 import { withRouter, Link } from 'react-router-dom';
 import CreateProjectForm from "./createProjectForm";
@@ -15,7 +15,8 @@ class ProjectManage extends React.Component {
             selectedRowKeys: [], // Check here to configure the default column
             loading: false,
             projects: [],
-            visible: false
+            visible: false,
+            imgLoading: false
         };
     }
 
@@ -45,6 +46,31 @@ class ProjectManage extends React.Component {
         });
     };
 
+    handleChange = (info, record) => {
+        if (info.file.status === 'uploading') {
+            this.setState({ imgLoading: true });
+            return;
+        }
+        if (info.file.status !== 'uploading') {
+            console.log(info.file.response.data);
+            console.log(record)
+        }
+        if (info.file.status === 'done') {
+            const data = {
+                "id": record.id,
+                // "details": record.details,
+                "image": info.file.response.data
+            };
+            editProjects(JSON.stringify(data)).then((res) => {
+                console.log(res);
+                this.setState({
+                    imgLoading: false,
+                });
+                this.start();
+            });
+        }
+    };
+
     render() {
         const columns = [{
             title: 'ID',
@@ -62,9 +88,22 @@ class ProjectManage extends React.Component {
             dataIndex: 'image',
             width: 80,
             render: (text, record) => (
-            <span>
-            <img src={text} alt="" />
-            </span>
+                <span>
+                    <Upload
+                        name="file"
+                        listType="picture-card"
+                        className="avatar-uploader"
+                        showUploadList={false}
+                        action="https://api.bangneedu.com/upload"
+                        headers={
+                            {'Authorization': 'Bearer ' + localStorage.getItem('token')}
+                        }
+                        // onChange={this.handleChange}
+                        onChange={(value)=>{this.handleChange(value,record)}}
+                    >
+                    {text ? <img src={text} alt="image" style={{ width: '100%' }} /> : uploadButton}
+                    </Upload>
+                </span>
             ),
         }, {
             title: '技术',
@@ -92,6 +131,12 @@ class ProjectManage extends React.Component {
             </span>
             ),
         }];
+        const uploadButton = (
+            <div>
+                <Icon type={this.state.imgLoading ? 'loading' : 'plus'} />
+                <div className="ant-upload-text">上传图片</div>
+            </div>
+        );
         const { loading, selectedRowKeys } = this.state;
         const rowSelection = {
             selectedRowKeys,

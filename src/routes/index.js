@@ -18,10 +18,15 @@ export default class CRouter extends Component {
     };
     requireLogin = (component, permission) => {
         // const { auth } = this.props;
+        // console.log(auth);
         //const  {permissions}  = auth.data;
         //if (process.env.NODE_ENV === 'production' && !permissions) { // 线上环境判断是否登录
         //     return <Redirect to={'/login'} />;
         // }
+        let token = localStorage.getItem('token');
+        if(!token) {
+            return <Redirect to={'/login'} />;
+        }
         return permission ? this.requireAuth(permission, component) : component;
     };
     render() {
