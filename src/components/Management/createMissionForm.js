@@ -2,9 +2,10 @@
  * Created by peng on 2019/7/31.
  */
 import React, { Component } from 'react';
-import {Button, Modal, Form, Input} from 'antd';
+import {Button, Modal, Form, Input, Select} from 'antd';
 import { createProjectTask } from '../../axios/index';
 const FormItem = Form.Item;
+const { Option } = Select;
 
 class CreateMissionForm extends Component {
     state = {
@@ -54,6 +55,19 @@ class CreateMissionForm extends Component {
                                     initialValue: this.props.id
                                 })(
                                     <Input disabled />
+                                )}
+                            </FormItem>
+                            <FormItem label="任务编号">
+                                {getFieldDecorator('title', {
+                                    rules: [{ required: true, message: '请选择任务编号！' }],
+                                })(
+                                    <Select style={{ width: 120 }}>
+                                        <Option value="1">1</Option>
+                                        <Option value="2">2</Option>
+                                        <Option value="3">3</Option>
+                                        <Option value="4">4</Option>
+                                        <Option value="5">5</Option>
+                                    </Select>
                                 )}
                             </FormItem>
                             <FormItem label="任务名称">

@@ -24,11 +24,19 @@ export default class CRouter extends Component {
         //if (process.env.NODE_ENV === 'production' && !permissions) { // 线上环境判断是否登录
         //     return <Redirect to={'/login'} />;
         // }
+
         let token = localStorage.getItem('token');
         if(token) {
             getUserProfile().then((res) => {
                 console.log(res);
-                if(res.status !== 200) {
+                if(res === undefined) {
+                    localStorage.setItem('token', '');
+                    return <Redirect to={'/login'} />;
+                }
+                if(res.status === 200) {
+                    // permission = false
+                } else if(res.status === 401){
+                    localStorage.setItem('token', '');
                     return <Redirect to={'/login'} />;
                 }
             });

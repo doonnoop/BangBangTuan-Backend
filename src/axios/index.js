@@ -123,3 +123,51 @@ export const createProjectTask = (data) => post({
         'Authorization': 'Bearer ' + localStorage.getItem('token')
     }
 });
+
+export const getStudyPath = () => get({
+    url: config.STUDY_PATH,
+    headers: {
+        'Authorization': 'Bearer ' + localStorage.getItem('token')
+    }
+});
+
+export const deleteStudyPath = (id) => Delete ({
+    url: config.STUDY_PATH + '/' + id,
+    headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + localStorage.getItem('token')
+    }
+});
+
+export const createStudyPath = (data) => post({
+    url: config.STUDY_PATH,
+    data,
+    headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + localStorage.getItem('token')
+    }
+});
+
+export const getStudyPathTasks = (id) => get({
+    url: config.STUDY_PATH_DETAILS + '/' + id,
+    headers: {
+        'Authorization': 'Bearer ' + localStorage.getItem('token')
+    }
+});
+
+export const deleteStudyPathTask = (id) => Delete ({
+    url: config.STUDY_PATH_DETAILS + '/' + id,
+    headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + localStorage.getItem('token')
+    }
+});
+
+export const createStudyPathTask = (data) => post({
+    url: config.STUDY_PATH_DETAILS,
+    data,
+    headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + localStorage.getItem('token')
+    }
+});

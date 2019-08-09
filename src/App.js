@@ -46,7 +46,6 @@ class App extends Component {
     render() {
         const { title } = this.state;
         const { auth = { data: {} }, responsive = { data: {} } } = this.props;
-        console.log(auth);
         return (
             <DocumentTitle title={title}>
                 <Layout>

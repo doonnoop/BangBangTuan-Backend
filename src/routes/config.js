@@ -7,7 +7,7 @@ export default {
                 { key: '/app/dashboard/users', title: '用户管理', icon: 'user', component: 'UserManage' },
                 { key: '/app/dashboard/teams', title: '组队管理', icon: 'team', component: 'TeamManage' },
                 { key: '/app/dashboard/projects', title: '项目管理', icon: 'project', component: 'ProjectManage'},
-                // { key: '/app/dashboard/missions', title: '任务管理', icon: 'project', component: 'MissionManage', hidden: true},
+                { key: '/app/dashboard/studyPath', title: '路径管理', icon: 'path', component: 'StudyPathManage'},
             ]
         },
         // {

@@ -25,3 +25,5 @@ export const CP_TEAM = URL + '/projectTeam';
 export const PROJECTS = URL + '/project';
 export const UPLOAD = URL + '/upload';
 export const PROJECT_TASK = URL + '/projectTask';
+export const STUDY_PATH = URL + '/learningPath';
+export const STUDY_PATH_DETAILS = URL + '/learningPathDetails';

@@ -85,7 +85,7 @@ class MissionManage extends React.Component {
         const hasSelected = selectedRowKeys.length > 0;
         return (
             <div className="gutter-example">
-                <BreadcrumbCustom first="管理" second="项目管理" third="任务管理"/>
+                <BreadcrumbCustom first="管理" second="项目管理" third="任务管理" />
                 <Row gutter={16}>
                     <Col className="gutter-row" md={24}>
                         <div className="gutter-box">

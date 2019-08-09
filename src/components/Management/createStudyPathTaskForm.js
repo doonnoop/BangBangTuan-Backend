@@ -1,12 +1,12 @@
 /**
- * Created by peng on 2019/7/30.
+ * Created by peng on 2019/8/8.
  */
 import React, { Component } from 'react';
-import {Button, Modal, Form, Input, Radio} from 'antd';
-import { createProjects } from '../../axios/index';
+import {Button, Modal, Form, Input} from 'antd';
+import { createStudyPathTask } from '../../axios/index';
 const FormItem = Form.Item;
 
-class CreateProjectForm extends Component {
+class CreateStudyPathTaskForm extends Component {
     state = {
         visible: false,
     };
@@ -25,7 +25,7 @@ class CreateProjectForm extends Component {
             console.log('Received values of form: ', values);
             form.resetFields();
             this.setState({ visible: false });
-            createProjects(values).then((res) => {
+            createStudyPathTask(values).then((res) => {
                 console.log(res);
                 this.props.start();
             });
@@ -42,42 +42,38 @@ class CreateProjectForm extends Component {
                 return (
                     <Modal
                         visible={visible}
-                        title="创建新项目"
+                        title="创建学习路径任务"
                         okText="创建"
                         onCancel={onCancel}
                         onOk={onCreate}
                     >
                         <Form layout="vertical">
-                            <FormItem label="项目名称">
-                                {getFieldDecorator('name', {
-                                    rules: [{ required: true, message: '请输入项目名称!' }],
+                            <FormItem label="项目ID">
+                                {getFieldDecorator('learningPathId', {
+                                    initialValue: this.props.id
+                                })(
+                                    <Input disabled />
+                                )}
+                            </FormItem>
+                            <FormItem label="任务名称">
+                                {getFieldDecorator('title', {
+                                    rules: [{ required: true, message: '请输入路径名称!' }],
                                 })(
                                     <Input />
                                 )}
                             </FormItem>
-                            <FormItem label="项目介绍">
+                            <FormItem label="任务详情">
                                 {getFieldDecorator('details', {
-                                    rules: [{required: true}]
-                                })(<Input type="textarea" row={3} />)}
-                            </FormItem>
-                            <FormItem label="技术栈">
-                                {getFieldDecorator('technology', {
-                                    rules: [{ message: '请输入技术栈!' }],
+                                    rules: [{ required: true, message: '请输入路径名称!' }],
                                 })(
                                     <Input />
                                 )}
                             </FormItem>
-                            <FormItem className="collection-create-form_last-form-item" style={{marginBottom: 0}}>
-                                {getFieldDecorator('type', {
-                                    initialValue: '1',
-                                })(
-                                    <Radio.Group>
-                                        <Radio value="1">实习</Radio>
-                                        <Radio value="2">练习</Radio>
-                                    </Radio.Group>
-                                )}
+                            <FormItem label="用时">
+                                {getFieldDecorator('time', {
+                                    rules: [{required: true, message: '请输入用时!'}]
+                                })(<Input />)}
                             </FormItem>
-
                         </Form>
                     </Modal>
                 );
@@ -85,7 +81,7 @@ class CreateProjectForm extends Component {
         );
         return (
             <div>
-                <Button style={{ float: "right", marginTop: -30 }} type="primary" onClick={this.showModal}>新建项目</Button>
+                <Button style={{ float: "right", marginTop: -30 }} type="primary" onClick={this.showModal}>新建路径任务</Button>
                 <CollectionCreateForm
                     ref={this.saveFormRef}
                     visible={this.state.visible}
@@ -97,4 +93,4 @@ class CreateProjectForm extends Component {
     }
 }
 
-export default CreateProjectForm;
+export default CreateStudyPathTaskForm;

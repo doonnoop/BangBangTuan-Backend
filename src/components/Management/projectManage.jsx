@@ -99,7 +99,7 @@ class ProjectManage extends React.Component {
                         }
                         onChange={(value)=>{this.handleChange(value,record)}}
                     >
-                    {text ? <img src={text} alt="image" style={{ width: '100%' }} /> : uploadButton}
+                    {text ? <img src={text} alt="avatar" style={{ width: '100%' }} /> : uploadButton}
                     </Upload>
                 </span>
             ),
