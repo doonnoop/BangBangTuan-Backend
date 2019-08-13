@@ -3,8 +3,8 @@
  */
 import React from 'react';
 import { Table, Button, Row, Col, Card } from 'antd';
-import { getAllUsers } from '../../axios/index';
-import BreadcrumbCustom from '../BreadcrumbCustom';
+import { getAllUsers } from '../../../axios';
+import BreadcrumbCustom from '../../BreadcrumbCustom';
 const columns = [{
     title: 'ID',
     dataIndex: 'id',

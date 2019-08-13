@@ -3,7 +3,7 @@
  */
 import React from 'react';
 import {Table, Button } from 'antd';
-import { getStudyPathTasks, deleteStudyPathTask} from '../../axios/index';
+import { getStudyPathTasks, deleteStudyPathTask} from '../../../axios';
 import { withRouter } from 'react-router-dom';
 import CreateStudyPathTaskForm from "./createStudyPathTaskForm";
 

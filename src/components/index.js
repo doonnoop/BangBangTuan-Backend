@@ -8,16 +8,18 @@ import BasicTable from './tables/BasicTables';
 import AdvancedTable from './tables/AdvancedTables';
 import AsynchronousTable from './tables/AsynchronousTable';
 import Dashboard from './dashboard/Dashboard';
-import UserManage from './Management/userManage';
-import TeamManage from './Management/teamManage';
-import ProjectManage from './Management/projectManage';
-import MissionManage from './Management/missionManage';
-import CreateProjectForm from './Management/createProjectForm';
-import CreateMissionForm from './Management/createMissionForm';
-import StudyPathManage from './Management/StudyPathManage';
-import CreateStudyPathForm from './Management/createStudyPathForm'
-import StudyPathTasks from './Management/StudyPathTasks';
-import CreateStudyPathTaskForm from './Management/createStudyPathTaskForm'
+import UserManage from './Management/Team/userManage';
+import TeamManage from './Management/Team/teamManage';
+import ProjectManage from './Management/Project/projectManage';
+import MissionManage from './Management/Project/missionManage';
+import CreateProjectForm from './Management/Project/createProjectForm';
+import CreateMissionForm from './Management/Project/createMissionForm';
+import StudyPathManage from './Management/StudyPath/StudyPathManage';
+import CreateStudyPathForm from './Management/StudyPath/createStudyPathForm'
+import StudyPathTasks from './Management/StudyPath/StudyPathTasks';
+import CreateStudyPathTaskForm from './Management/StudyPath/createStudyPathTaskForm';
+import ScheduleManage from './Management/Schedule/ScheduleManage';
+import CreateScheduleForm from './Management/Schedule/CreateScheduleForm';
 
 const WysiwygBundle = Loadable({ // 按需加载富文本配置
     loader: () => import('./ui/Wysiwyg'),
@@ -28,5 +30,6 @@ export default {
     BasicTable, AdvancedTable, AsynchronousTable, Dashboard, WysiwygBundle,
     UserManage, TeamManage, ProjectManage, MissionManage,
     CreateProjectForm, CreateMissionForm, StudyPathManage,
-    CreateStudyPathForm, StudyPathTasks, CreateStudyPathTaskForm
+    CreateStudyPathForm, StudyPathTasks, CreateStudyPathTaskForm,
+    ScheduleManage, CreateScheduleForm
 }

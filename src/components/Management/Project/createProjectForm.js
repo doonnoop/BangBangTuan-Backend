@@ -1,13 +1,12 @@
 /**
- * Created by peng on 2019/7/31.
+ * Created by peng on 2019/7/30.
  */
 import React, { Component } from 'react';
-import {Button, Modal, Form, Input, Select} from 'antd';
-import { createProjectTask } from '../../axios/index';
+import {Button, Modal, Form, Input, Radio} from 'antd';
+import { createProjects } from '../../../axios';
 const FormItem = Form.Item;
-const { Option } = Select;
 
-class CreateMissionForm extends Component {
+class CreateProjectForm extends Component {
     state = {
         visible: false,
     };
@@ -23,11 +22,10 @@ class CreateMissionForm extends Component {
             if (err) {
                 return;
             }
-
             console.log('Received values of form: ', values);
             form.resetFields();
             this.setState({ visible: false });
-            createProjectTask(values).then((res) => {
+            createProjects(values).then((res) => {
                 console.log(res);
                 this.props.start();
             });
@@ -44,44 +42,42 @@ class CreateMissionForm extends Component {
                 return (
                     <Modal
                         visible={visible}
-                        title="创建新任务"
+                        title="创建新项目"
                         okText="创建"
                         onCancel={onCancel}
                         onOk={onCreate}
                     >
                         <Form layout="vertical">
-                            <FormItem label="项目ID">
-                                {getFieldDecorator('projectId', {
-                                    initialValue: this.props.id
-                                })(
-                                    <Input disabled />
-                                )}
-                            </FormItem>
-                            <FormItem label="任务编号">
-                                {getFieldDecorator('title', {
-                                    rules: [{ required: true, message: '请选择任务编号！' }],
-                                })(
-                                    <Select style={{ width: 120 }}>
-                                        <Option value="1">1</Option>
-                                        <Option value="2">2</Option>
-                                        <Option value="3">3</Option>
-                                        <Option value="4">4</Option>
-                                        <Option value="5">5</Option>
-                                    </Select>
-                                )}
-                            </FormItem>
-                            <FormItem label="任务名称">
+                            <FormItem label="项目名称">
                                 {getFieldDecorator('name', {
-                                    rules: [{ required: true, message: '请输入任务名称!' }],
+                                    rules: [{ required: true, message: '请输入项目名称!' }],
                                 })(
                                     <Input />
                                 )}
                             </FormItem>
-                            <FormItem label="任务介绍">
+                            <FormItem label="项目介绍">
                                 {getFieldDecorator('details', {
                                     rules: [{required: true}]
                                 })(<Input type="textarea" row={3} />)}
                             </FormItem>
+                            <FormItem label="技术栈">
+                                {getFieldDecorator('technology', {
+                                    rules: [{ message: '请输入技术栈!' }],
+                                })(
+                                    <Input />
+                                )}
+                            </FormItem>
+                            <FormItem className="collection-create-form_last-form-item" style={{marginBottom: 0}}>
+                                {getFieldDecorator('type', {
+                                    initialValue: '1',
+                                })(
+                                    <Radio.Group>
+                                        <Radio value="1">实习</Radio>
+                                        <Radio value="2">练习</Radio>
+                                    </Radio.Group>
+                                )}
+                            </FormItem>
+
                         </Form>
                     </Modal>
                 );
@@ -89,7 +85,7 @@ class CreateMissionForm extends Component {
         );
         return (
             <div>
-                <Button style={{ float: "right", marginTop: -32 }} type="primary" onClick={this.showModal}>新建任务</Button>
+                <Button style={{ float: "right", marginTop: -30 }} type="primary" onClick={this.showModal}>新建项目</Button>
                 <CollectionCreateForm
                     ref={this.saveFormRef}
                     visible={this.state.visible}
@@ -101,4 +97,4 @@ class CreateMissionForm extends Component {
     }
 }
 
-export default CreateMissionForm;
+export default CreateProjectForm;

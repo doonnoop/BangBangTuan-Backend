@@ -3,9 +3,9 @@
  */
 import React from 'react';
 import {Table, Button, Row, Col, Card } from 'antd';
-import { getStudyPath, deleteStudyPath} from '../../axios/index';
-import BreadcrumbCustom from '../BreadcrumbCustom';
-import { withRouter, Link } from 'react-router-dom';
+import { getStudyPath, deleteStudyPath} from '../../../axios';
+import BreadcrumbCustom from '../../BreadcrumbCustom';
+import { withRouter } from 'react-router-dom';
 import CreateStudyPathForm from "./createStudyPathForm";
 import StudyPathTasks from "./StudyPathTasks";
 

@@ -3,7 +3,7 @@
  */
 import React, { Component } from 'react';
 import {Button, Modal, Form, Input} from 'antd';
-import { createStudyPathTask } from '../../axios/index';
+import { createStudyPathTask } from '../../../axios';
 const FormItem = Form.Item;
 
 class CreateStudyPathTaskForm extends Component {

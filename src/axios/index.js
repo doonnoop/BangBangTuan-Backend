@@ -171,3 +171,27 @@ export const createStudyPathTask = (data) => post({
         'Authorization': 'Bearer ' + localStorage.getItem('token')
     }
 });
+
+export const getAllSchedule = () => get({
+    url: config.SCHEDULE + '/',
+    headers: {
+        'Authorization': 'Bearer ' + localStorage.getItem('token')
+    }
+});
+
+export const deleteSchedule = (id) => Delete ({
+    url: config.SCHEDULE + '/' + id,
+    headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + localStorage.getItem('token')
+    }
+});
+
+export const createSchedule = (data) => post({
+    url: config.SCHEDULE,
+    data,
+    headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + localStorage.getItem('token')
+    }
+});

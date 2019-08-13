@@ -3,8 +3,8 @@
  */
 import React from 'react';
 import {Table, Button, Row, Col, Card, Upload, Icon } from 'antd';
-import { getAllProjects, deleteProjects, editProjects} from '../../axios/index';
-import BreadcrumbCustom from '../BreadcrumbCustom';
+import { getAllProjects, deleteProjects, editProjects} from '../../../axios';
+import BreadcrumbCustom from '../../BreadcrumbCustom';
 import { withRouter, Link } from 'react-router-dom';
 import CreateProjectForm from "./createProjectForm";
 

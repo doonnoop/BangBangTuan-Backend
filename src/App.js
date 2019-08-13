@@ -6,7 +6,7 @@ import HeaderCustom from './components/HeaderCustom';
 import { Layout } from 'antd';
 import { ThemePicker } from './components/widget';
 import { connectAlita } from 'redux-alita';
-import MissionManage from "./components/Management/missionManage";
+import MissionManage from "./components/Management/Project/missionManage";
 import {Switch, Route} from 'react-router-dom'
 
 const { Content, Footer } = Layout;

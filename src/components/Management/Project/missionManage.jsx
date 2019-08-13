@@ -3,8 +3,8 @@
  */
 import React from 'react';
 import { Table, Button, Row, Col, Card } from 'antd';
-import {deleteProjectTask, getAllProjectTasks} from '../../axios/index';
-import BreadcrumbCustom from '../BreadcrumbCustom';
+import {deleteProjectTask, getAllProjectTasks} from '../../../axios';
+import BreadcrumbCustom from '../../BreadcrumbCustom';
 import CreateMissionForm from "./createMissionForm";
 
 class MissionManage extends React.Component {

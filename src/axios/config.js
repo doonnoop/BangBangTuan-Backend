@@ -27,3 +27,4 @@ export const UPLOAD = URL + '/upload';
 export const PROJECT_TASK = URL + '/projectTask';
 export const STUDY_PATH = URL + '/learningPath';
 export const STUDY_PATH_DETAILS = URL + '/learningPathDetails';
+export const SCHEDULE = URL + '/schedule';
