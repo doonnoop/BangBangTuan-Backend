@@ -4,6 +4,7 @@
 import React, { Component } from 'react';
 import {Button, Modal, Form, Input, DatePicker} from 'antd';
 import { createSchedule } from '../../../axios';
+import moment from 'moment';
 const FormItem = Form.Item;
 
 class CreateScheduleForm extends Component {
@@ -22,6 +23,9 @@ class CreateScheduleForm extends Component {
             if (err) {
                 return;
             }
+
+            // console.log(moment(values.openingTime).format("YYYY-MM-DD HH:MM"));
+            values.openingTime = moment(values.openingTime).format("YYYY-MM-DD HH:MM");
             console.log('Received values of form: ', values);
             form.resetFields();
             this.setState({ visible: false });
@@ -61,10 +65,10 @@ class CreateScheduleForm extends Component {
                                 })(<Input />)}
                             </FormItem>
                             <FormItem label="开团时间">
-                                {getFieldDecorator('technology', {
+                                {getFieldDecorator('openingTime', {
                                     rules: [{ required: true, message: '请选择开团时间!' }],
                                 })(
-                                    <DatePicker placeholder="请选择开团时间" />
+                                    <DatePicker placeholder="请选择开团时间" format="YYYY-MM-DD"/>
                                 )}
                             </FormItem>
                         </Form>
