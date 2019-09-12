@@ -20,6 +20,7 @@ import StudyPathTasks from './Management/StudyPath/StudyPathTasks';
 import CreateStudyPathTaskForm from './Management/StudyPath/createStudyPathTaskForm';
 import ScheduleManage from './Management/Schedule/ScheduleManage';
 import CreateScheduleForm from './Management/Schedule/CreateScheduleForm';
+import UploadImage from './pages/UploadImage';
 
 const WysiwygBundle = Loadable({ // 按需加载富文本配置
     loader: () => import('./ui/Wysiwyg'),
@@ -31,5 +32,5 @@ export default {
     UserManage, TeamManage, ProjectManage, MissionManage,
     CreateProjectForm, CreateMissionForm, StudyPathManage,
     CreateStudyPathForm, StudyPathTasks, CreateStudyPathTaskForm,
-    ScheduleManage, CreateScheduleForm
+    ScheduleManage, CreateScheduleForm, UploadImage
 }

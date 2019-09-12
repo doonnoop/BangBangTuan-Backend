@@ -11,6 +11,7 @@ export default {
                 { key: '/app/dashboard/schedule', title: '日程管理', icon: 'calendar', component: 'ScheduleManage'},
             ]
         },
+        { key: '/app/dashboard/upload', title: '上传', icon: 'upload', component: 'UploadImage'},
         // {
         //     key: '/app/ui', title: 'UI', icon: 'scan',
         //     subs: [
