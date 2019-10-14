@@ -68,7 +68,7 @@ class CreateScheduleForm extends Component {
                                 {getFieldDecorator('openingTime', {
                                     rules: [{ required: true, message: '请选择开团时间!' }],
                                 })(
-                                    <DatePicker placeholder="请选择开团时间" format="YYYY-MM-DD"/>
+                                    <DatePicker placeholder="请选择开团时间" format="YYYY-MM-DD" />
                                 )}
                             </FormItem>
                         </Form>

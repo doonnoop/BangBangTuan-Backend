@@ -28,3 +28,5 @@ export const PROJECT_TASK = URL + '/projectTask';
 export const STUDY_PATH = URL + '/learningPath';
 export const STUDY_PATH_DETAILS = URL + '/learningPathDetails';
 export const SCHEDULE = URL + '/schedule';
+export const COMMODITY = URL + '/commodity';
+export const ORDERS = URL + '/orderForm';

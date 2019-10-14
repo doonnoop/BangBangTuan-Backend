@@ -11,6 +11,14 @@ export default {
                 { key: '/app/dashboard/schedule', title: '日程管理', icon: 'calendar', component: 'ScheduleManage'},
             ]
         },
+        {
+            key: '/app/mall', title: '商城', icon: 'shop',
+            subs: [
+                { key: '/app/dashboard/shop', title: '兑换商品', icon: 'shopping', component: 'ShopItems' },
+                { key: '/app/dashboard/addShopItem', title: '添加商品', icon: 'folder-add', component: 'CreateShopItem' },
+                { key: '/app/dashboard/orders', title: '所有订单', icon: 'book', component: 'Orders' },
+            ]
+        },
         { key: '/app/dashboard/upload', title: '上传', icon: 'upload', component: 'UploadImage'},
         // {
         //     key: '/app/ui', title: 'UI', icon: 'scan',

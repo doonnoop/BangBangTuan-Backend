@@ -195,3 +195,44 @@ export const createSchedule = (data) => post({
         'Authorization': 'Bearer ' + localStorage.getItem('token')
     }
 });
+
+export const getShopItems = () => get({
+    url: config.COMMODITY,
+    headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + localStorage.getItem('token')
+    }
+});
+
+export const deleteShopItem = (id) => Delete ({
+    url: config.COMMODITY + '/' + id,
+    headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + localStorage.getItem('token')
+    }
+});
+
+export const createShopItem = (data) => post({
+    url: config.COMMODITY,
+    data,
+    headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + localStorage.getItem('token')
+    }
+});
+
+export const getOrders = () => get({
+    url: config.ORDERS + "/0",
+    headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + localStorage.getItem('token')
+    }
+});
+
+export const deleteOrder = (id) => Delete ({
+    url: config.ORDERS + '/' + id,
+    headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + localStorage.getItem('token')
+    }
+});
