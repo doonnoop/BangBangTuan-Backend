@@ -9,6 +9,7 @@ export default {
                 { key: '/app/dashboard/projects', title: '项目管理', icon: 'project', component: 'ProjectManage'},
                 { key: '/app/dashboard/studyPath', title: '路径管理', icon: 'stock', component: 'StudyPathManage'},
                 { key: '/app/dashboard/schedule', title: '日程管理', icon: 'calendar', component: 'ScheduleManage'},
+                { key: '/app/dashboard/homework', title: '作业管理', icon: 'code', component: 'MissionHomework'},
             ]
         },
         {

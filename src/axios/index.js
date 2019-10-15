@@ -236,3 +236,11 @@ export const deleteOrder = (id) => Delete ({
         'Authorization': 'Bearer ' + localStorage.getItem('token')
     }
 });
+
+export const getMissionHomeworks = () => get({
+    url: config.PROJECTWORK,
+    headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + localStorage.getItem('token')
+    }
+});
