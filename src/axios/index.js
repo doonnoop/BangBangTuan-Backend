@@ -38,7 +38,7 @@ export const admin = (data) => post({
 export const guest = () => get({ url: config.MOCK_AUTH_VISITOR });
 
 export const getAllUsers = () => get({
-    url: config.ALL_USERS + '?current=1&size=100',
+    url: config.ALL_USERS + '?current=1&size=500',
     headers: {
         'Authorization': 'Bearer ' + localStorage.getItem('token')
     }
