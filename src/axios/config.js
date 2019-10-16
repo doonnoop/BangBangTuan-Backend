@@ -31,3 +31,4 @@ export const SCHEDULE = URL + '/schedule';
 export const COMMODITY = URL + '/commodity';
 export const ORDERS = URL + '/orderForm';
 export const PROJECTWORK = URL + '/projectWork';
+export const ARTICLES = URL + '/article';

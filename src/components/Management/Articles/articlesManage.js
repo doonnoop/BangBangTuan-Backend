@@ -1,18 +1,19 @@
 /**
- * Created by peng on 2019/10/15.
+ * Created by peng on 2019/10/16.
  */
 import React from 'react';
-import {Table, Button, Row, Col, Card } from 'antd';
-import { getMissionHomeworks, deleteShopItem } from '../../../axios';
+import {Table, Button, Row, Col, Card, Upload, Icon } from 'antd';
+import { getArticles, deleteArticles } from '../../../axios';
 import BreadcrumbCustom from '../../BreadcrumbCustom';
+import { withRouter, Link } from 'react-router-dom';
 
-class MissionHomework extends React.Component {
+class ArticleManage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            homeWorks: [],
-            selectedRowKeys: [],
+            selectedRowKeys: [], // Check here to configure the default column
             loading: false,
+            articles: [],
         };
     }
 
@@ -21,10 +22,10 @@ class MissionHomework extends React.Component {
     }
     start = () => {
         this.setState({ loading: true });
-        getMissionHomeworks().then((res) => {
+        getArticles().then((res) => {
             console.log(res)
             this.setState({
-                homeWorks: res.data.records,
+                articles: res.data.records,
                 loading:false
             });
         });
@@ -34,39 +35,36 @@ class MissionHomework extends React.Component {
         this.setState({ selectedRowKeys });
     };
 
+    deleteArticle = (id) => {
+        console.log(id);
+        deleteArticles(id).then((res) => {
+            console.log(res);
+            this.start();
+        });
+    };
+
     render() {
         const columns = [{
             title: 'ID',
             dataIndex: 'id',
-            width: 5
+            width: 80
         },{
-            title: 'projectTaskUserId',
-            dataIndex: 'projectTaskUserId',
+            title: '标题',
+            dataIndex: 'title',
             width: 80,
         }, {
-            title: '代码地址',
-            dataIndex: 'codeAddress',
-            width: 80
-        }, {
-            title: 'demo地址',
-            dataIndex: 'demoAddress',
-            width: 80
-        }, {
-            title: '创建时间',
-            dataIndex: 'createTime',
-            width: 80
-        }, {
-            title: 'userId',
-            dataIndex: 'userId',
-            width: 80
-        }, {
-            title: '用户名',
+            title: '用户名称',
             dataIndex: 'name',
             width: 80
         }, {
-            title: '说明',
-            dataIndex: 'explain',
-            width: 80
+            title: 'Action',
+            key: 'action',
+            width: 80,
+            render: (text, record) => (
+                <span>
+                <Button onClick={() => {this.deleteArticle(record.id)}}>删除</Button>
+            </span>
+            ),
         }];
         const { loading, selectedRowKeys } = this.state;
         const rowSelection = {
@@ -76,18 +74,18 @@ class MissionHomework extends React.Component {
         const hasSelected = selectedRowKeys.length > 0;
         return (
             <div className="gutter-example">
-                <BreadcrumbCustom first="管理" second="作业管理" />
+                <BreadcrumbCustom first="管理" second="文章管理" />
                 <Row gutter={16}>
                     <Col className="gutter-row" md={24}>
                         <div className="gutter-box">
-                            <Card title="任务作业表格" bordered={false}>
+                            <Card title="文章管理表格" bordered={false}>
                                 <div style={{ marginBottom: 16 }}>
                                     <Button type="primary" onClick={this.start}
                                             disabled={loading} loading={loading}
                                     >Reload</Button>
                                     <span style={{ marginLeft: 8 }}>{hasSelected ? `Selected ${selectedRowKeys.length} items` : ''}</span>
                                 </div>
-                                <Table rowSelection={rowSelection} columns={columns} dataSource={this.state.homeWorks} rowKey="id" scroll={{ x: 1300 }} />
+                                <Table rowSelection={rowSelection} columns={columns} dataSource={this.state.articles} rowKey="id" scroll={{ x: 1300 }} />
                             </Card>
                         </div>
                     </Col>
@@ -97,4 +95,4 @@ class MissionHomework extends React.Component {
     }
 }
 
-export default MissionHomework;
+export default withRouter(ArticleManage);

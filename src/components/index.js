@@ -25,6 +25,7 @@ import ShopItems from './Shop/ShopItems'
 import CreateShopItem from './Shop/CreateShopItem';
 import Orders from "./Shop/Orders";
 import MissionHomework from "./Management/Project/MissionHomework";
+import ArticleManage from "./Management/Articles/articlesManage";
 
 const WysiwygBundle = Loadable({ // 按需加载富文本配置
     loader: () => import('./ui/Wysiwyg'),
@@ -37,5 +38,5 @@ export default {
     CreateProjectForm, CreateMissionForm, StudyPathManage,
     CreateStudyPathForm, StudyPathTasks, CreateStudyPathTaskForm,
     ScheduleManage, CreateScheduleForm, UploadImage,
-    ShopItems, CreateShopItem, Orders, MissionHomework
+    ShopItems, CreateShopItem, Orders, MissionHomework, ArticleManage
 }

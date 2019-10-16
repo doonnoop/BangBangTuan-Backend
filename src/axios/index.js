@@ -244,3 +244,19 @@ export const getMissionHomeworks = () => get({
         'Authorization': 'Bearer ' + localStorage.getItem('token')
     }
 });
+
+export const getArticles = () => get({
+    url: config.ARTICLES + '?current=1&size=100',
+    headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + localStorage.getItem('token')
+    }
+});
+
+export const deleteArticles = (id) => Delete ({
+    url: config.ARTICLES + '/' + id,
+    headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + localStorage.getItem('token')
+    }
+});
