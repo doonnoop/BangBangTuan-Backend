@@ -1,5 +1,5 @@
 /**
- * Created by peng on 2019/9/12.
+ * Created by Taryn on 2019/9/12.
  */
 import React, { Component } from 'react';
 import {Button, Form, Input, Col, Row, Upload, Icon, message} from 'antd';
@@ -21,6 +21,10 @@ class CreateShopItem extends Component {
         const form = this.form;
         form.validateFields((err, values) => {
             if (err) {
+                return;
+            }
+            if(values.commodityImage === undefined) {
+                message.error("上传图片");
                 return;
             }
             if(values.commodityImage.response === "" || values.commodityImage.response === undefined ) {
@@ -46,6 +50,9 @@ class CreateShopItem extends Component {
         console.log('Upload event:', e);
         if (Array.isArray(e)) {
             return e;
+        }
+        if(e.file.response ) {
+            message.success("上传成功")
         }
         return e && e.file;
     };

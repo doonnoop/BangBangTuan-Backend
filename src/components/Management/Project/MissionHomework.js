@@ -1,9 +1,9 @@
 /**
- * Created by peng on 2019/10/15.
+ * Created by Taryn on 2019/10/15.
  */
 import React from 'react';
 import {Table, Button, Row, Col, Card } from 'antd';
-import { getMissionHomeworks, deleteShopItem } from '../../../axios';
+import { getMissionHomeworks } from '../../../axios';
 import BreadcrumbCustom from '../../BreadcrumbCustom';
 
 class MissionHomework extends React.Component {

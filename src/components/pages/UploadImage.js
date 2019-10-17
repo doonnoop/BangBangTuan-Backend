@@ -1,5 +1,5 @@
 /**
- * Created by peng on 2019/8/22.
+ * Created by Taryn on 2019/8/22.
  */
 import React from 'react';
 import {Col, Icon, Row, Upload, Button, message} from "antd";
@@ -7,10 +7,11 @@ import {Col, Icon, Row, Upload, Button, message} from "antd";
 
 class UploadImage extends React.Component {
     state = {
-        animated: ''
+
     };
 
     render() {
+        let that = this;
         const props = {
             name: 'file',
             action: 'https://api.bangneedu.com/upload',
@@ -23,6 +24,9 @@ class UploadImage extends React.Component {
                 }
                 if (info.file.status === 'done') {
                     message.success(`${info.file.name} file uploaded successfully`);
+                    that.setState({
+                        url: info.file.response.data
+                    })
                 } else if (info.file.status === 'error') {
                     message.error(`${info.file.name} file upload failed.`);
                 }
@@ -31,12 +35,14 @@ class UploadImage extends React.Component {
         return (
             <Row gutter={8}>
                 <Col span={24}>
-                    <Upload {...props}>
-                        <Button>
-                            <Icon type="upload" /> Click to Upload
-                        </Button>
-                    </Upload>
-                    <div>{this.state.filename}</div>
+                    <div style={{margin: 40}}>
+                        <Upload {...props} listType="picture">
+                            <Button>
+                                <Icon type="upload" /> 上传图片
+                            </Button>
+                        </Upload>
+                        <div style={{marginTop: 10}}>{this.state.url}</div>
+                    </div>
                 </Col>
             </Row>
         )

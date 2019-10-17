@@ -1,5 +1,5 @@
 /**
- * Created by hao.cheng on 2017/4/16.
+ * Created by Taryn on 2019/7/30.
  */
 import axios from 'axios';
 import { get, post, Delete, put } from './tools';
@@ -255,6 +255,40 @@ export const getArticles = () => get({
 
 export const deleteArticles = (id) => Delete ({
     url: config.ARTICLES + '/' + id,
+    headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + localStorage.getItem('token')
+    }
+});
+
+export const getBanners = () => get({
+    url: config.BANNER + '?current=1&size=10',
+    headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + localStorage.getItem('token')
+    }
+});
+
+export const deleteBanner = (id) => Delete ({
+    url: config.BANNER + '/' + id,
+    headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + localStorage.getItem('token')
+    }
+});
+
+export const editBannerRoute = (data) => put({
+    url: config.BANNER,
+    data,
+    headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + localStorage.getItem('token')
+    }
+});
+
+export const createBanner = (data) => post({
+    url: config.BANNER,
+    data,
     headers: {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer ' + localStorage.getItem('token')

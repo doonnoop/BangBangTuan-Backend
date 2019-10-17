@@ -2,15 +2,16 @@ export default {
     menus: [ // 菜单相关路由
         { key: '/app/dashboard/index', title: '首页', icon: 'mobile', component: 'Dashboard'},
         {
-            key: '/app/manage', title: '管理', icon: 'copy',
+            key: '/app/manage', title: '管理', icon: 'appstore',
             subs: [
                 { key: '/app/dashboard/users', title: '用户管理', icon: 'user', component: 'UserManage' },
-                { key: '/app/dashboard/teams', title: '组队管理', icon: 'team', component: 'TeamManage' },
                 { key: '/app/dashboard/projects', title: '项目管理', icon: 'project', component: 'ProjectManage'},
                 { key: '/app/dashboard/studyPath', title: '路径管理', icon: 'stock', component: 'StudyPathManage'},
                 { key: '/app/dashboard/schedule', title: '日程管理', icon: 'calendar', component: 'ScheduleManage'},
                 { key: '/app/dashboard/homework', title: '作业管理', icon: 'code', component: 'MissionHomework'},
                 { key: '/app/dashboard/articles', title: '文章管理', icon: 'folder', component: 'ArticleManage'},
+                { key: '/app/dashboard/teams', title: '组队管理', icon: 'team', component: 'TeamManage' },
+                { key: '/app/dashboard/banners', title: '轮播图管理', icon: 'picture', component: 'BannerManage' },
             ]
         },
         {

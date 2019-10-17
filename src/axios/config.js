@@ -1,5 +1,5 @@
 /**
- * Created by 叶子 on 2017/7/30.
+ * Created by Taryn on 2019/7/30.
  * 接口地址配置文件
  */
 
@@ -32,3 +32,4 @@ export const COMMODITY = URL + '/commodity';
 export const ORDERS = URL + '/orderForm';
 export const PROJECTWORK = URL + '/projectWork';
 export const ARTICLES = URL + '/article';
+export const BANNER = URL + '/carouselImage';

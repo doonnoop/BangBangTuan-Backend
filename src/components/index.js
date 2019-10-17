@@ -1,6 +1,6 @@
 /**
  * 路由组件出口文件
- * doonnoop 2019年8月8日
+ * Taryn 2019年8月8日
  */
 import Loadable from 'react-loadable';
 import Loading from './widget/Loading';
@@ -26,6 +26,8 @@ import CreateShopItem from './Shop/CreateShopItem';
 import Orders from "./Shop/Orders";
 import MissionHomework from "./Management/Project/MissionHomework";
 import ArticleManage from "./Management/Articles/articlesManage";
+import BannerManage from "./Management/Banner/bannerManage";
+import CreateBannerForm from "./Management/Banner/createBannerForm"
 
 const WysiwygBundle = Loadable({ // 按需加载富文本配置
     loader: () => import('./ui/Wysiwyg'),
@@ -38,5 +40,6 @@ export default {
     CreateProjectForm, CreateMissionForm, StudyPathManage,
     CreateStudyPathForm, StudyPathTasks, CreateStudyPathTaskForm,
     ScheduleManage, CreateScheduleForm, UploadImage,
-    ShopItems, CreateShopItem, Orders, MissionHomework, ArticleManage
+    ShopItems, CreateShopItem, Orders, MissionHomework, ArticleManage,
+    BannerManage, CreateBannerForm
 }

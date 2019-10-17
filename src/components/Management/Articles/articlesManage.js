@@ -1,11 +1,11 @@
 /**
- * Created by peng on 2019/10/16.
+ * Created by Taryn on 2019/10/16.
  */
 import React from 'react';
-import {Table, Button, Row, Col, Card, Upload, Icon } from 'antd';
+import {Table, Button, Row, Col, Card } from 'antd';
 import { getArticles, deleteArticles } from '../../../axios';
 import BreadcrumbCustom from '../../BreadcrumbCustom';
-import { withRouter, Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 class ArticleManage extends React.Component {
     constructor(props) {

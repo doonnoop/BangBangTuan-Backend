@@ -1,5 +1,5 @@
 /**
- * Created by peng on 2019/8/8.
+ * Created by Taryn on 2019/8/8.
  */
 import React from 'react';
 import {Table, Button, Row, Col, Card } from 'antd';
@@ -89,8 +89,7 @@ class StudyPathManage extends React.Component {
                                     <span style={{ marginLeft: 8 }}>{hasSelected ? `Selected ${selectedRowKeys.length} items` : ''}</span>
                                     <CreateStudyPathForm start={this.start} />
                                 </div>
-                                <Table rowSelection={rowSelection} columns={columns} dataSource={this.state.path} rowKey="id"
-                                       expandedRowRender={record => <StudyPathTasks id={record.id} />} />
+                                <Table rowSelection={rowSelection} columns={columns} dataSource={this.state.path} rowKey="id" expandedRowRender={record => <StudyPathTasks id={record.id} />} />
                             </Card>
                         </div>
                     </Col>
