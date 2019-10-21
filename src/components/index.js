@@ -9,7 +9,7 @@ import AdvancedTable from './tables/AdvancedTables';
 import AsynchronousTable from './tables/AsynchronousTable';
 import Dashboard from './dashboard/Dashboard';
 import UserManage from './Management/Team/userManage';
-import TeamManage from './Management/Team/teamManage';
+import TeamManage from './Management/Project/teamManage';
 import ProjectManage from './Management/Project/projectManage';
 import MissionManage from './Management/Project/missionManage';
 import CreateProjectForm from './Management/Project/createProjectForm';
@@ -27,7 +27,8 @@ import Orders from "./Shop/Orders";
 import MissionHomework from "./Management/Project/MissionHomework";
 import ArticleManage from "./Management/Articles/articlesManage";
 import BannerManage from "./Management/Banner/bannerManage";
-import CreateBannerForm from "./Management/Banner/createBannerForm"
+import CreateBannerForm from "./Management/Banner/createBannerForm";
+import CPTeamManage from "./Management/Team/cpTeamManage";
 
 const WysiwygBundle = Loadable({ // 按需加载富文本配置
     loader: () => import('./ui/Wysiwyg'),
@@ -41,5 +42,5 @@ export default {
     CreateStudyPathForm, StudyPathTasks, CreateStudyPathTaskForm,
     ScheduleManage, CreateScheduleForm, UploadImage,
     ShopItems, CreateShopItem, Orders, MissionHomework, ArticleManage,
-    BannerManage, CreateBannerForm
+    BannerManage, CreateBannerForm, CPTeamManage
 }

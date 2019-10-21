@@ -5,6 +5,7 @@ export default {
             key: '/app/manage', title: '管理', icon: 'appstore',
             subs: [
                 { key: '/app/dashboard/users', title: '用户管理', icon: 'user', component: 'UserManage' },
+                { key: '/app/dashboard/cp_teams', title: 'CP管理', icon: 'team', component: 'CPTeamManage' },
                 { key: '/app/dashboard/projects', title: '项目管理', icon: 'project', component: 'ProjectManage'},
                 { key: '/app/dashboard/studyPath', title: '路径管理', icon: 'stock', component: 'StudyPathManage'},
                 { key: '/app/dashboard/schedule', title: '日程管理', icon: 'calendar', component: 'ScheduleManage'},

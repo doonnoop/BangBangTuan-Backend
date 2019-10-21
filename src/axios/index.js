@@ -124,6 +124,13 @@ export const createProjectTask = (data) => post({
     }
 });
 
+export const getTeamMatching = () => get({
+    url: config.PROJECT_TEAM + '?current=1&size=200',
+    headers: {
+        'Authorization': 'Bearer ' + localStorage.getItem('token')
+    }
+});
+
 export const getStudyPath = () => get({
     url: config.STUDY_PATH,
     headers: {

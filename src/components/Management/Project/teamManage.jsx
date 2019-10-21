@@ -1,9 +1,9 @@
 /**
- * Created by peng on 2019/7/25.
+ * Created by Taryn on 2019/7/25.
  */
 import React from 'react';
 import { Table, Button, Row, Col, Card } from 'antd';
-import { getCpMatching } from '../../../axios';
+import { getTeamMatching } from '../../../axios';
 import BreadcrumbCustom from '../../BreadcrumbCustom';
 const columns = [{
     title: 'ID',
@@ -43,7 +43,7 @@ class TeamManage extends React.Component {
     }
     start = () => {
         this.setState({ loading: true });
-        getCpMatching().then((res) => {
+        getTeamMatching().then((res) => {
             console.log(res)
             this.setState({
                 teams: res.data.records,
