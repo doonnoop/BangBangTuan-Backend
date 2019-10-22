@@ -61,7 +61,14 @@ export const uploadFiles = (file) => post ({
 });
 
 export const getCpMatching = () => get({
-    url: config.CP_TEAM,
+    url: config.CP_TEAM + '?current=1&size=500',
+    headers: {
+        'Authorization': 'Bearer ' + localStorage.getItem('token')
+    }
+});
+
+export const getCpTeamMate = (id) => get({
+    url: config.CP_ADMIN + '/' + id,
     headers: {
         'Authorization': 'Bearer ' + localStorage.getItem('token')
     }

@@ -22,6 +22,7 @@ export const USER_LOGIN = URL + '/login';
 export const USER_PROFILE = URL + '/user';
 export const ALL_USERS = URL + '/allUser';
 export const CP_TEAM = URL + '/cpMatching';
+export const CP_ADMIN = URL + '/cpAdmin';
 export const PROJECTS = URL + '/project';
 export const UPLOAD = URL + '/upload';
 export const PROJECT_TASK = URL + '/projectTask';
