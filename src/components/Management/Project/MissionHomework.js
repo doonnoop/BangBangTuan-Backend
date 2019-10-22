@@ -38,7 +38,7 @@ class MissionHomework extends React.Component {
         const columns = [{
             title: 'ID',
             dataIndex: 'id',
-            width: 5
+            width: 80
         },{
             title: 'projectTaskUserId',
             dataIndex: 'projectTaskUserId',
@@ -62,6 +62,10 @@ class MissionHomework extends React.Component {
         }, {
             title: '用户名',
             dataIndex: 'name',
+            width: 80
+        },{
+            title: '项目名称',
+            dataIndex: 'projectTaskName',
             width: 80
         }, {
             title: '说明',

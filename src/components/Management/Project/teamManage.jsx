@@ -10,19 +10,27 @@ const columns = [{
     dataIndex: 'id',
     width: 80
 },{
+    title: 'userID',
+    dataIndex: 'userId',
+    width: 80
+},{
     title: '用户名',
     dataIndex: 'name',
     width: 80,
     render: (text, record) => <a href={record.url} target="_blank" rel="noopener noreferrer">{text}</a>
+},{
+    title: 'projectID',
+    dataIndex: 'projectId',
+    width: 80
+},{
+    title: '项目名称',
+    dataIndex: 'projectName',
+    width: 80
 }, {
     title: '手机号',
     dataIndex: 'phone',
     width: 80
 }, {
-    title: 'userID',
-    dataIndex: 'userId',
-    width: 80
-},{
     title: '微信号',
     dataIndex: 'weixin',
     width: 80
@@ -75,7 +83,7 @@ class TeamManage extends React.Component {
                                     >Reload</Button>
                                     <span style={{ marginLeft: 8 }}>{hasSelected ? `Selected ${selectedRowKeys.length} items` : ''}</span>
                                 </div>
-                                <Table rowSelection={rowSelection} columns={columns} dataSource={this.state.teams} rowKey="id" />
+                                <Table rowSelection={rowSelection} columns={columns} dataSource={this.state.teams} rowKey="id" scroll={{ x: 1300 }} />
                             </Card>
                         </div>
                     </Col>
