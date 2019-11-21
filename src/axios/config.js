@@ -35,3 +35,5 @@ export const PROJECTWORK = URL + '/projectWork';
 export const PROJECT_TEAM = URL + '/projectTeam';
 export const ARTICLES = URL + '/article';
 export const BANNER = URL + '/carouselImage';
+export const GROUP = URL + '/learningPathTeam';
+export const CLOCK = URL + '/punchTheClock';

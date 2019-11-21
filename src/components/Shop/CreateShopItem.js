@@ -10,9 +10,6 @@ class CreateShopItem extends Component {
     state = {
         visible: false,
     };
-    showModal = () => {
-        this.setState({ visible: true });
-    };
     handleCancel = () => {
         this.setState({ visible: false });
     };

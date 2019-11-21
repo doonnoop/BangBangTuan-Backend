@@ -29,6 +29,9 @@ import ArticleManage from "./Management/Articles/articlesManage";
 import BannerManage from "./Management/Banner/bannerManage";
 import CreateBannerForm from "./Management/Banner/createBannerForm";
 import CPTeamManage from "./Management/Team/cpTeamManage";
+import GroupManage from './Management/Group/GroupManage';
+import ClockManage from "./Management/Clock/ClockManage";
+import CreatGroupForm from './Management/Group/createGroupForm';
 
 const WysiwygBundle = Loadable({ // 按需加载富文本配置
     loader: () => import('./ui/Wysiwyg'),
@@ -42,5 +45,6 @@ export default {
     CreateStudyPathForm, StudyPathTasks, CreateStudyPathTaskForm,
     ScheduleManage, CreateScheduleForm, UploadImage,
     ShopItems, CreateShopItem, Orders, MissionHomework, ArticleManage,
-    BannerManage, CreateBannerForm, CPTeamManage
+    BannerManage, CreateBannerForm, CPTeamManage, GroupManage,
+    ClockManage, CreatGroupForm
 }

@@ -308,3 +308,44 @@ export const createBanner = (data) => post({
         'Authorization': 'Bearer ' + localStorage.getItem('token')
     }
 });
+
+export const getGroups = () => get({
+    url: config.GROUP + '?current=1&size=20',
+    headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + localStorage.getItem('token')
+    }
+});
+
+export const createGroup = (data) => post({
+    url: config.GROUP,
+    data,
+    headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + localStorage.getItem('token')
+    }
+});
+
+export const deleteGroup = (id) => Delete ({
+    url: config.GROUP + '/' + id,
+    headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + localStorage.getItem('token')
+    }
+});
+
+export const getClocks = () => get({
+    url: config.CLOCK + '?current=1&size=500',
+    headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + localStorage.getItem('token')
+    }
+});
+
+export const deleteClock = (id) => Delete ({
+    url: config.CLOCK + '/' + id,
+    headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + localStorage.getItem('token')
+    }
+});

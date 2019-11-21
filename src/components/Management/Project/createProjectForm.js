@@ -1,5 +1,5 @@
 /**
- * Created by peng on 2019/7/30.
+ * Created by Taryn on 2019/7/30.
  */
 import React, { Component } from 'react';
 import {Button, Modal, Form, Input, Radio} from 'antd';
