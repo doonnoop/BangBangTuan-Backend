@@ -349,3 +349,28 @@ export const deleteClock = (id) => Delete ({
         'Authorization': 'Bearer ' + localStorage.getItem('token')
     }
 });
+
+export const getTags = () => get({
+    url: config.TAG,
+    headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + localStorage.getItem('token')
+    }
+});
+
+export const deleteTag = (id) => Delete ({
+    url: config.TAG + '/' + id,
+    headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + localStorage.getItem('token')
+    }
+});
+
+export const addTag = (data) => post({
+    url: config.TAG,
+    data,
+    headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + localStorage.getItem('token')
+    }
+});

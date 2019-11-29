@@ -32,6 +32,7 @@ import CPTeamManage from "./Management/Team/cpTeamManage";
 import GroupManage from './Management/Group/GroupManage';
 import ClockManage from "./Management/Clock/ClockManage";
 import CreatGroupForm from './Management/Group/createGroupForm';
+import TagManage from './Management/Tag/TagManage';
 
 const WysiwygBundle = Loadable({ // 按需加载富文本配置
     loader: () => import('./ui/Wysiwyg'),
@@ -46,5 +47,5 @@ export default {
     ScheduleManage, CreateScheduleForm, UploadImage,
     ShopItems, CreateShopItem, Orders, MissionHomework, ArticleManage,
     BannerManage, CreateBannerForm, CPTeamManage, GroupManage,
-    ClockManage, CreatGroupForm
+    ClockManage, CreatGroupForm, TagManage
 }

@@ -37,3 +37,4 @@ export const ARTICLES = URL + '/article';
 export const BANNER = URL + '/carouselImage';
 export const GROUP = URL + '/learningPathTeam';
 export const CLOCK = URL + '/punchTheClock';
+export const TAG = URL + '/tag';

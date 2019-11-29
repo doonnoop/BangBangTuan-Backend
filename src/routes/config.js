@@ -15,6 +15,7 @@ export default {
                 { key: '/app/dashboard/groups', title: '自学团管理', icon: 'usergroup-add', component: 'GroupManage' },
                 { key: '/app/dashboard/banners', title: '轮播图管理', icon: 'picture', component: 'BannerManage' },
                 { key: '/app/dashboard/clocks', title: '打卡管理', icon: 'carry-out', component: 'ClockManage' },
+                { key: '/app/dashboard/tags', title: '标签管理', icon: 'crown', component: 'TagManage' },
             ]
         },
         {
@@ -49,14 +50,14 @@ export default {
         //         { key: '/app/animation/exampleAnimations', title: '动画案例', component: 'ExampleAnimations'},
         //     ],
         // },
-        // {
-        //     key: '/app/table', title: '表格', icon: 'copy',
-        //     subs: [
-        //         { key: '/app/table/basicTable', title: '基础表格', component: 'BasicTable'},
-        //         { key: '/app/table/advancedTable', title: '高级表格', component: 'AdvancedTable'},
-        //         { key: '/app/table/asynchronousTable', title: '异步表格', component: 'AsynchronousTable'},
-        //     ],
-        // },
+        {
+            key: '/app/table', title: '表格', icon: 'copy',
+            subs: [
+                { key: '/app/table/basicTable', title: '基础表格', component: 'BasicTable'},
+                { key: '/app/table/advancedTable', title: '高级表格', component: 'AdvancedTable'},
+                { key: '/app/table/asynchronousTable', title: '异步表格', component: 'AsynchronousTable'},
+            ],
+        },
         // {
         //     key: '/app/form', title: '表单', icon: 'edit',
         //     subs: [
