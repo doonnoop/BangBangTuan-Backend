@@ -30,7 +30,8 @@ class Login extends React.Component {
                 console.log('Received values of form: ', values);
                 const body = {
                     "username": values.userName,
-                    "password": values.password
+                    "password": values.password,
+                    "type": "1"
                 };
                 const { setAlitaState } = this.props;
                 if (values.userName === 'bbt-admin' && values.password === 'TvM&zaV%nvWjwfN1') {
