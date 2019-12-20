@@ -52,13 +52,20 @@ class ClockManage extends React.Component {
             dataIndex: 'userId',
             width: 80,
         }, {
+            title: '用户名称',
+            dataIndex: 'name',
+            width: 80
+        }, {
             title: '内容',
             dataIndex: 'content',
             width: 80
         }, {
-            title: '用户名称',
-            dataIndex: 'name',
-            width: 80
+            title: '图片',
+            dataIndex: 'image',
+            width: 80,
+            render: (text, record) => {
+                return <img src={text ? text : ""} alt="" style={{ width: '80%'}} />
+            }
         }, {
             title: '创建时间',
             dataIndex: 'createTime',
